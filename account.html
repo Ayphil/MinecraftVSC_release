@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your account – mcvsc</title>
+<meta name="robots" content="noindex">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src https://ddvoqdiiqslfygjtyhfh.supabase.co; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand pixel" href="./">
+      <svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true">
+        <rect width="8" height="8" fill="#866043"/><rect width="8" height="3" fill="#5fa83a"/>
+        <rect y="3" x="1" width="1" height="1" fill="#5fa83a"/><rect y="3" x="5" width="2" height="1" fill="#5fa83a"/>
+        <rect x="3" y="5" width="1" height="1" fill="#5e422d"/><rect x="6" y="6" width="1" height="1" fill="#5e422d"/>
+      </svg>
+      mcvsc
+    </a>
+    <div class="nav-right">
+      <ul>
+        <li><a href="./#pricing">Pricing</a></li>
+        <li><a href="./#faq">FAQ</a></li>
+      </ul>
+      <button class="nav-cta" id="signout" type="button" hidden>Sign out</button>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="wrap">
+
+    <!-- loading -->
+    <p id="view-loading" class="sub" role="status">Loading…</p>
+
+    <!-- signed out -->
+    <section id="view-auth" class="auth-card" hidden aria-labelledby="auth-title">
+      <h1 id="auth-title" class="pixel">mcvsc account</h1>
+      <p class="sub">The same email and password sign you in to the mcvsc app.</p>
+
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" id="tab-signin" aria-selected="true" aria-controls="form-signin">Sign in</button>
+        <button type="button" role="tab" id="tab-signup" aria-selected="false" aria-controls="form-signup">Create account</button>
+      </div>
+
+      <p id="auth-msg" class="msg" role="alert"></p>
+
+      <form id="form-signin" class="stack" novalidate>
+        <label class="field">Email
+          <input type="email" name="email" autocomplete="email" required maxlength="254">
+        </label>
+        <label class="field">Password
+          <input type="password" name="password" autocomplete="current-password" required maxlength="72">
+        </label>
+        <button class="btn block" type="submit">Sign in</button>
+        <div class="row-between">
+          <button class="linkish" type="button" id="show-reset">Forgot your password?</button>
+        </div>
+      </form>
+
+      <form id="form-signup" class="stack" novalidate hidden>
+        <label class="field">Email
+          <input type="email" name="email" autocomplete="email" required maxlength="254">
+        </label>
+        <label class="field">Password <small>At least 10 characters. A passphrase of a few words is great.</small>
+          <input type="password" name="password" autocomplete="new-password" required minlength="10" maxlength="72">
+        </label>
+        <label class="check">
+          <input type="checkbox" name="agree" required>
+          <span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms</a> and have read the <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a>.</span>
+        </label>
+        <button class="btn block" type="submit">Create account</button>
+      </form>
+
+      <form id="form-reset" class="stack" novalidate hidden>
+        <p class="sub">Enter your email and we'll send a link to choose a new password.</p>
+        <label class="field">Email
+          <input type="email" name="email" autocomplete="email" required maxlength="254">
+        </label>
+        <button class="btn block" type="submit">Send reset link</button>
+        <button class="linkish" type="button" id="hide-reset">Back to sign in</button>
+      </form>
+    </section>
+
+    <!-- after a password-reset link -->
+    <section id="view-newpass" class="auth-card" hidden aria-labelledby="np-title">
+      <h1 id="np-title" class="pixel">New password</h1>
+      <p class="sub">Choose a new password for your account.</p>
+      <p id="np-msg" class="msg" role="alert"></p>
+      <form id="form-newpass" class="stack" novalidate>
+        <label class="field">New password <small>At least 10 characters.</small>
+          <input type="password" name="password" autocomplete="new-password" required minlength="10" maxlength="72">
+        </label>
+        <label class="field">Repeat it
+          <input type="password" name="again" autocomplete="new-password" required minlength="10" maxlength="72">
+        </label>
+        <button class="btn block" type="submit">Save password</button>
+      </form>
+    </section>
+
+    <!-- signed in -->
+    <div id="view-dash" class="dash" hidden>
+      <div class="dash-head">
+        <div>
+          <h1 class="pixel">Your account</h1>
+          <p class="sub">Signed in as <strong id="d-email"></strong></p>
+        </div>
+        <a class="btn secondary" id="d-download" href="#">Download mcvsc</a>
+      </div>
+
+      <p id="dash-msg" class="msg" role="status"></p>
+
+      <section class="card" aria-labelledby="plan-h">
+        <div class="plan-now">
+          <div>
+            <h2 id="plan-h" class="visually-hidden">Plan</h2>
+            <span class="badge" id="d-status"></span>
+            <div class="plan-name" id="d-plan"></div>
+            <p class="plan-meta" id="d-period"></p>
+          </div>
+          <div>
+            <div class="meter" id="d-meter" role="meter" aria-label="Storage used" aria-valuemin="0" aria-valuemax="100"><i></i></div>
+            <div class="meter-label"><span id="d-used"></span><span id="d-quota"></span></div>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn secondary" type="button" id="d-portal" hidden>Manage billing</button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="plans-h">
+        <h2 id="plans-h">Plans</h2>
+        <p class="hint" id="plans-hint"></p>
+        <label class="check" id="d-notify-row" hidden><input type="checkbox" id="d-notify">
+          <span>Email me when paid plans open. One email, nothing else; untick anytime.</span></label>
+        <div class="plans" id="d-plans">
+          <div class="plan" data-plan="free">
+            <h3>Free</h3>
+            <div class="price">$0</div>
+            <ul><li><span class="space" data-free-space>1 GB</span> of world storage</li><li>Every feature</li></ul>
+            <div class="buy"></div>
+          </div>
+          <div class="plan" data-plan="starter">
+            <h3>Starter</h3>
+            <div class="price paid-only">$9 <small>/ year</small></div>
+            <div class="soon soon-only">Coming soon</div>
+            <ul><li><span class="space">5 GB</span> of world storage</li><li>Yearly only</li></ul>
+            <div class="buy"></div>
+          </div>
+          <div class="plan" data-plan="plus">
+            <h3>Plus</h3>
+            <div class="price paid-only">$18 <small>/ year</small></div>
+            <div class="soon soon-only">Coming soon</div>
+            <ul><li><span class="space">25 GB</span> of world storage</li><li class="paid-only">or $2 monthly</li></ul>
+            <div class="buy"></div>
+          </div>
+          <div class="plan" data-plan="pro">
+            <h3>Pro</h3>
+            <div class="price paid-only">$45 <small>/ year</small></div>
+            <div class="soon soon-only">Coming soon</div>
+            <ul><li><span class="space">250 GB</span> of world storage</li><li class="paid-only">or $5 monthly</li></ul>
+            <div class="buy"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="worlds-h">
+        <h2 id="worlds-h">Worlds in the cloud</h2>
+        <p class="hint">Upload, play and restore worlds from the mcvsc app. This list is read-only.</p>
+        <p class="empty" id="d-noworlds" hidden>No worlds yet. Open mcvsc, select a world, then <em>Checkout</em> and <em>Submit</em> to upload it.</p>
+        <table class="worlds" id="d-worlds" hidden>
+          <thead><tr><th scope="col">World</th><th scope="col" class="opt">Modpack</th><th scope="col">Status</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <div class="two-col">
+        <section class="card" aria-labelledby="pw-h">
+          <h2 id="pw-h">Change password</h2>
+          <p class="hint">Other PCs stay signed in until their session ends.</p>
+          <p id="pw-msg" class="msg" role="alert"></p>
+          <form id="form-password" class="stack" novalidate>
+            <label class="field">New password <small>At least 10 characters.</small>
+              <input type="password" name="password" autocomplete="new-password" required minlength="10" maxlength="72">
+            </label>
+            <label class="field">Repeat it
+              <input type="password" name="again" autocomplete="new-password" required minlength="10" maxlength="72">
+            </label>
+            <button class="btn secondary" type="submit">Change password</button>
+          </form>
+        </section>
+
+        <section class="card danger-zone" aria-labelledby="del-h">
+          <h2 id="del-h">Delete account</h2>
+          <p class="hint">Deletes every world, every snapshot and every stored file, cancels your subscription right away
+            (no refund for the current period), and removes your login. This can't be undone.</p>
+          <p id="del-msg" class="msg" role="alert"></p>
+          <form id="form-delete" class="stack" novalidate>
+            <label class="field">Type your email to confirm
+              <input type="email" name="confirm" autocomplete="off" required maxlength="254">
+            </label>
+            <label class="field">Your password
+              <input type="password" name="password" autocomplete="current-password" required maxlength="72">
+            </label>
+            <button class="btn danger" type="submit">Delete my account and data</button>
+          </form>
+        </section>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>mcvsc · not affiliated with Mojang or Microsoft.</span>
+    <span class="links">
+      <a href="./">Home</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </span>
+  </div>
+</footer>
+
+<script src="assets/config.js"></script>
+<script src="assets/auth.js"></script>
+<script src="assets/account.js"></script>
+</body>
+</html>

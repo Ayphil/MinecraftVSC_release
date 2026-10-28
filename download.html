@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download mcvsc</title>
+<meta name="description" content="Download mcvsc for Windows: back up your Minecraft worlds and play them on every PC.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; font-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand pixel" href="./">mcvsc</a>
+    <div class="nav-right"><a class="nav-cta" href="account.html">Account</a></div>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="wrap legal">
+    <h1 class="pixel">Download mcvsc</h1>
+    <p>Windows 10 and 11, 64-bit. One file, nothing else to install.</p>
+
+    <p><a class="btn" href="https://github.com/Ayphil/MinecraftVSC_release/releases/latest/download/mcvsc.exe">Download mcvsc.exe</a></p>
+    <p>Other versions, release notes and checksums are on the
+      <a href="https://github.com/Ayphil/MinecraftVSC_release/releases">releases page</a>.</p>
+
+    <h2>Get started</h2>
+    <ol>
+      <li>Put <code>mcvsc.exe</code> in a folder of its own (for example <code>Documents\mcvsc</code>). It keeps its
+        settings next to itself.</li>
+      <li>Double-click it, then create a free account or sign in.</li>
+      <li>Pick a world and press <strong>▶ Play</strong>. mcvsc downloads the newest version, starts Minecraft, and
+        uploads the world when you close the game.</li>
+      <li>On your other PC, do the same with the same email. Your worlds are there.</li>
+    </ol>
+
+    <h2>"Windows protected your PC"</h2>
+    <p>New programs from small developers get this warning from Microsoft Defender SmartScreen until enough people have
+      run them. Click <strong>More info</strong>, then <strong>Run anyway</strong>. Only do this for a file you
+      downloaded from this page or the releases page above.</p>
+
+    <h2>Check the file (optional)</h2>
+    <p>Each release lists the file's SHA-256 checksum. To compare, open PowerShell in the download folder and run:</p>
+    <p><code>Get-FileHash .\mcvsc.exe -Algorithm SHA256</code></p>
+    <p>The long code it prints must match the one on the releases page exactly.</p>
+
+    <h2>What it touches on your PC</h2>
+    <ul>
+      <li>Only the world folders in the game folders you choose (Minecraft Launcher, Prism, CurseForge, Modrinth), and,
+        unless you turn it off, the game settings file next to them (<code>options.txt</code>).</li>
+      <li>Never your mods, resource-pack files, shader-pack files or the game itself.</li>
+      <li>When local changes haven't been uploaded, choose to use the cloud copy or upload your local copy.
+        If you choose the cloud copy, the local copy is saved in a backup folder.</li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>mcvsc · not affiliated with Mojang or Microsoft.</span>
+    <span class="links"><a href="./">Home</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span>
+  </div>
+</footer>
+</body>
+</html>

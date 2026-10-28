@@ -1,0 +1,25 @@
+# Security headers for Cloudflare Pages / Netlify (both read this file). On a host that can't set headers
+# (GitHub Pages), each page's <meta http-equiv="Content-Security-Policy"> still applies, minus frame-ancestors
+# (account.js refuses to run inside a frame instead).
+# If the Supabase URL changes, update connect-src here and in account.html.
+/*
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://ddvoqdiiqslfygjtyhfh.supabase.co; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+
+/account.html
+  Referrer-Policy: no-referrer
+  Cache-Control: no-store
+
+# Cloudflare Pages serves account.html at /account
+/account
+  Referrer-Policy: no-referrer
+  Cache-Control: no-store
+
+/assets/*
+  Cache-Control: public, max-age=3600
